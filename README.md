@@ -1,0 +1,2 @@
+# Stm32CustomUSBDeviceClass
+
