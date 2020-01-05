@@ -27,15 +27,12 @@
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 #define USBD_VID                      0x0483
-#define USBD_PID                      0xaaaa  /* Replace '0xaaaa' with your device product ID */
-#define USBD_LANGID_STRING            0xbbb  /* Replace '0xbbb' with your device language ID */
-#define USBD_MANUFACTURER_STRING      "xxxxx" /* Add your manufacturer string */
-#define USBD_PRODUCT_HS_STRING        "xxxxx" /* Add your product High Speed string */
-#define USBD_PRODUCT_FS_STRING        "xxxxx" /* Add your product Full Speed string */
-#define USBD_CONFIGURATION_HS_STRING  "xxxxx" /* Add your configuration High Speed string */
-#define USBD_INTERFACE_HS_STRING      "xxxxx" /* Add your Interface High Speed string */
-#define USBD_CONFIGURATION_FS_STRING  "xxxxx" /* Add your configuration Full Speed string */
-#define USBD_INTERFACE_FS_STRING      "xxxxx" /* Add your Interface Full Speed string */
+#define USBD_PID                      0x002A  /* Replace '0xaaaa' with your device product ID */
+#define USBD_LANGID_STRING            0x0409  /* Replace '0xbbb' with your device language ID */
+#define USBD_MANUFACTURER_STRING      "STMicroelectronics" /* Add your manufacturer string */
+#define USBD_PRODUCT_FS_STRING        "Stm32CustomUSBDeviceClass" /* Add your product Full Speed string */
+#define USBD_CONFIGURATION_FS_STRING  "Stm32CustomUSBDeviceClass Config" /* Add your configuration Full Speed string */
+#define USBD_INTERFACE_FS_STRING      "Stm32CustomUSBDeviceClass Interface" /* Add your Interface Full Speed string */
 
 /* Private macro -------------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
@@ -147,14 +144,7 @@ uint8_t *USBD_Class_LangIDStrDescriptor(USBD_SpeedTypeDef speed, uint16_t *lengt
   */
 uint8_t *USBD_Class_ProductStrDescriptor(USBD_SpeedTypeDef speed, uint16_t *length)
 {
-  if (speed == USBD_SPEED_HIGH)
-  {
-    USBD_GetString((uint8_t *)USBD_PRODUCT_HS_STRING, USBD_StrDesc, length);
-  }
-  else
-  {
-    USBD_GetString((uint8_t *)USBD_PRODUCT_FS_STRING, USBD_StrDesc, length);
-  }
+  USBD_GetString((uint8_t *)USBD_PRODUCT_FS_STRING, USBD_StrDesc, length);
   return USBD_StrDesc;
 }
 
@@ -194,14 +184,7 @@ uint8_t *USBD_Class_SerialStrDescriptor(USBD_SpeedTypeDef speed, uint16_t *lengt
   */
 uint8_t *USBD_Class_ConfigStrDescriptor(USBD_SpeedTypeDef speed, uint16_t *length)
 {
-  if (speed == USBD_SPEED_HIGH)
-  {
-    USBD_GetString((uint8_t *)USBD_CONFIGURATION_HS_STRING, USBD_StrDesc, length);
-  }
-  else
-  {
-    USBD_GetString((uint8_t *)USBD_CONFIGURATION_FS_STRING, USBD_StrDesc, length);
-  }
+  USBD_GetString((uint8_t *)USBD_CONFIGURATION_FS_STRING, USBD_StrDesc, length);
   return USBD_StrDesc;
 }
 
@@ -213,14 +196,7 @@ uint8_t *USBD_Class_ConfigStrDescriptor(USBD_SpeedTypeDef speed, uint16_t *lengt
   */
 uint8_t *USBD_Class_InterfaceStrDescriptor(USBD_SpeedTypeDef speed, uint16_t *length)
 {
-  if (speed == USBD_SPEED_HIGH)
-  {
-    USBD_GetString((uint8_t *)USBD_INTERFACE_HS_STRING, USBD_StrDesc, length);
-  }
-  else
-  {
-    USBD_GetString((uint8_t *)USBD_INTERFACE_FS_STRING, USBD_StrDesc, length);
-  }
+  USBD_GetString((uint8_t *)USBD_INTERFACE_FS_STRING, USBD_StrDesc, length);
   return USBD_StrDesc;
 }
 
